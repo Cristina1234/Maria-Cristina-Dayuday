@@ -1,0 +1,8 @@
+import java.util.*;
+import java.lang.*;
+
+public class Date {
+	private int year;
+	private int month;
+	private int day;
+}
