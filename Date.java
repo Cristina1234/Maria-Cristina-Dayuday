@@ -42,7 +42,7 @@ public class Date {
       this.month = month;
    }
 
-   public int getDay() {
+   public int getDay () {
       return day;
    }
 
@@ -50,7 +50,14 @@ public class Date {
       if(day < 1 && day > 31) {
          throw new IllegalArgumentException("day invalid!");
       } else if (getMonth() == 2) {
-         
+         if(day == 30 || day == 31) {
+            throw new IllegalArgumentException("invalid input of day for month of February!");
+         } else if(day == 29) {
+            //check if ang year kay leap year siya
+            if(!(getYear() % 4 == 0 && getYear() % 100 == 0 && getYear() % 400 == 0)) {
+               throw new IllegalArgumentException("The year you inputted is not a leap year, therefore setting the day to 29 is invalid");
+             } 
+         }
       }
       this.day = day;
    }
@@ -64,28 +71,5 @@ public class Date {
    public String toString() {
       String formattedDate = String.format("%d/%d/%d", this.day, this.month, this.year);
       return formattedDate;
-   }
-
-   public static void main(String[] args) {
-      // Test constructor and toString()
-      Date d1 = new Date(2016, 4, 6);
-      System.out.println(d1);  // toString()
- 
-      // Test Setters and Getters
-      d1.setYear(2012);
-      d1.setMonth(12);
-      d1.setDay(23);
-      System.out.println(d1.toString());  // run toString() to inspect the modified instance
-      System.out.println("Year is: " + d1.getYear());
-      System.out.println("Month is: " + d1.getMonth());
-      System.out.println("Day is: " + d1.getDay());
- 
-      // Test setDate()
-      d1.setDate(2988, 1, 2);
-      System.out.println(d1.toString());  // toString()
-
-      Date d2 = new Date();
-      System.out.println(d2.toString());  // toString()
-
    }
 }
