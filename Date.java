@@ -11,6 +11,8 @@ public class Date {
       this.day = 1;
       this.month = 1;
       this.year = 1000;
+      
+      //this (1000, 1, 1);
    }
 
    public Date(int year, int month, int day) {
@@ -24,7 +26,7 @@ public class Date {
    }
 
    public void setYear(int year) {
-      if(year < 1000 && year > 9999) {
+      if(year < 1000 && year > 9999) { // range
          throw new IllegalArgumentException("year invalid!");
      }
       this.year = year;
@@ -47,7 +49,7 @@ public class Date {
    }
 
    public void setDay(int day) {
-      if(day < 1 && day > 31) {
+      if(day < 1 && day > 31) { // range || operator
          throw new IllegalArgumentException("day invalid!");
       } else if (getMonth() == 2) {
          if(day == 30 || day == 31) {
@@ -70,6 +72,6 @@ public class Date {
 
    public String toString() {
       String formattedDate = String.format("%d/%d/%d", this.day, this.month, this.year);
-      return formattedDate;
+      return formattedDate; // instead of return formattedDate just return String.format .......
    }
 }
